@@ -1,0 +1,24 @@
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environment
+venv/
+.env
+
+# VS Code settings
+.vscode/
+
+# --- CRITICAL: Ignore Data and Outputs ---
+# We do NOT want to upload heavy datasets or training logs to GitHub
+data/
+outputs/
+logs/
+*.pth
+*.pt
+*.ckpt
+
+# Keep the folder structure but ignore content (Optional trick)
+# This allows 'data/' folder to exist but be empty, though I prefer symlinks.
+submissions/
