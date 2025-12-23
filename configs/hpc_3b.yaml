@@ -1,0 +1,44 @@
+# CAFA6 HPC Training Configuration - ESM2 3B Model
+# Location: configs/hpc_3b.yaml
+# Use this only if you have A100 or similar high-memory GPU
+
+data:
+  data_dir: "data"
+  max_length: 1024
+  val_ratio: 0.1
+  num_workers: 8
+
+model:
+  type: "esm"
+  name: "facebook/esm2_t36_3B_UR50D"  # 3B parameters
+  dropout: 0.1
+  freeze_backbone: false
+  use_gradient_checkpointing: true  # Essential for 3B model
+
+training:
+  batch_size: 1  # Very small batch for 3B
+  gradient_accumulation_steps: 32  # Effective batch = 32
+  epochs: 15
+  learning_rate: 2.0e-5  # Even lower LR
+  weight_decay: 0.01
+  max_grad_norm: 1.0
+  warmup_ratio: 0.1
+  use_amp: true
+  early_stopping_patience: 5
+  use_weighted_loss: true
+
+evaluation:
+  eval_every_n_epochs: 1
+  threshold_search: true
+  threshold_range: [0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5]
+
+output:
+  save_dir: "outputs/hpc_3b"
+  save_every_n_epochs: 2
+  log_every_n_steps: 50
+
+wandb:
+  enabled: true
+  project: "cafa6"
+  name: "esm2_3b_hpc"
+

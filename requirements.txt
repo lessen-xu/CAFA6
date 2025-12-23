@@ -1,3 +1,6 @@
+# CAFA6 Protein Function Prediction
+# Location: requirements.txt
+
 # Deep Learning
 torch>=2.0.0
 transformers>=4.30.0
@@ -22,4 +25,10 @@ tqdm>=4.65.0
 
 # Utilities
 pyyaml>=6.0
+
+# Experiment Tracking (optional)
 wandb>=0.15.0
+
+# Additional utilities
+joblib>=1.3.0
+
