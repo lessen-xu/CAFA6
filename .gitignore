@@ -21,4 +21,3 @@ logs/
 
 # Keep the folder structure but ignore content (Optional trick)
 # This allows 'data/' folder to exist but be empty, though I prefer symlinks.
-submissions/
